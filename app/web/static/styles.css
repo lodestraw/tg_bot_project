@@ -1,0 +1,245 @@
+:root {
+    --bg: var(--tg-theme-bg-color, #ffffff);
+    --secondary-bg: var(--tg-theme-secondary-bg-color, #f1f1f4);
+    --text: var(--tg-theme-text-color, #000000);
+    --hint: var(--tg-theme-hint-color, #8a8a8e);
+    --link: var(--tg-theme-link-color, #2481cc);
+    --button: var(--tg-theme-button-color, #2481cc);
+    --button-text: var(--tg-theme-button-text-color, #ffffff);
+    --section-bg: var(--tg-theme-section-bg-color, var(--tg-theme-bg-color, #ffffff));
+    --destructive: var(--tg-theme-destructive-text-color, #d14343);
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Атрибут hidden должен побеждать display из классов ниже. */
+[hidden] {
+    display: none !important;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.screen {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 16px 16px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.header {
+    padding: 4px 2px 0;
+}
+
+.title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.subtitle {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: var(--hint);
+}
+
+.card {
+    background: var(--section-bg);
+    border: 1px solid color-mix(in srgb, var(--hint) 22%, transparent);
+    border-radius: var(--radius);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.row {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.input {
+    /* flex-basis задаётся только внутри .row (горизонтальная раскладка),
+       иначе в колоночной карточке он превратился бы в высоту поля. */
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+    font-size: 16px;
+    color: var(--text);
+    background: var(--secondary-bg);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    outline: none;
+}
+
+.row .input {
+    flex: 1 1 160px;
+    width: auto;
+}
+
+.input:focus {
+    border-color: var(--link);
+}
+
+.input::placeholder {
+    color: var(--hint);
+}
+
+.btn {
+    padding: 11px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.btn-primary {
+    background: var(--button);
+    color: var(--button-text);
+}
+
+.btn-primary:active:not(:disabled) {
+    opacity: 0.8;
+}
+
+.albums {
+    display: flex;
+    flex-direction: column;
+    max-height: 46vh;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+.album {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--hint) 18%, transparent);
+    color: var(--text);
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.album:last-child {
+    border-bottom: none;
+}
+
+.album:active {
+    background: var(--secondary-bg);
+}
+
+.album-icon {
+    flex: 0 0 auto;
+    font-size: 18px;
+}
+
+.album-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.album-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.album-meta {
+    font-size: 12px;
+    color: var(--hint);
+}
+
+.hint {
+    margin: 0;
+    font-size: 13px;
+    color: var(--hint);
+}
+
+.error {
+    margin: 0;
+    padding: 12px 14px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--destructive);
+    background: color-mix(in srgb, var(--destructive) 12%, transparent);
+    border-radius: var(--radius);
+    word-break: break-word;
+}
+
+.skeleton {
+    height: 44px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    background: var(--secondary-bg);
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    z-index: 10;
+}
+
+.overlay-text {
+    margin: 0;
+    font-size: 15px;
+    color: var(--hint);
+}
+
+.spinner {
+    width: 34px;
+    height: 34px;
+    border: 3px solid color-mix(in srgb, var(--hint) 35%, transparent);
+    border-top-color: var(--button);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

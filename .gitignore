@@ -1,0 +1,11 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+client_secret.json
+*.db
+*.db-journal
+.tmp/
+.idea/
+.vscode/

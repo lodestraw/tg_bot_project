@@ -1,0 +1,20 @@
+# --- Telegram bot ---
+aiogram>=3.15,<4
+
+# --- Mini App backend ---
+fastapi>=0.115,<1
+uvicorn>=0.32,<1
+
+# --- HTTP / Google Photos REST ---
+aiohttp>=3.10,<4
+
+# --- Хранилище белого списка ---
+aiosqlite>=0.20
+
+# --- Конфигурация ---
+pydantic-settings>=2.6,<3
+python-dotenv>=1.0
+
+# --- Одноразовый OAuth 2.0 (auth_setup.py) ---
+google-auth>=2.35
+google-auth-oauthlib>=1.2

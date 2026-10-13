@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="referrer" content="no-referrer">
+    <title>Выбор альбома</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<main class="screen">
+    <header class="header">
+        <h1 class="title">Куда загрузить?</h1>
+        <p class="subtitle" id="subtitle">Загрузка данных…</p>
+    </header>
+
+    <section class="card" id="create-card">
+        <label class="label" for="new-album">➕ Создать новый альбом</label>
+        <div class="row">
+            <input
+                    id="new-album"
+                    class="input"
+                    type="text"
+                    maxlength="500"
+                    autocomplete="off"
+                    placeholder="Название альбома">
+            <button id="create-btn" class="btn btn-primary" type="button" disabled>Создать</button>
+        </div>
+    </section>
+
+    <section class="card" id="list-card">
+        <label class="label" for="search">Существующие альбомы</label>
+        <input
+                id="search"
+                class="input"
+                type="search"
+                autocomplete="off"
+                placeholder="🔍 Поиск по названию">
+
+        <div id="albums" class="albums" role="list"></div>
+        <p id="list-hint" class="hint"></p>
+    </section>
+
+    <p id="error" class="error" hidden></p>
+</main>
+
+<div id="overlay" class="overlay" hidden>
+    <div class="spinner" aria-label="Загрузка"></div>
+    <p id="overlay-text" class="overlay-text">Отправляю…</p>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
